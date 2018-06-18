@@ -16,6 +16,7 @@ class EditNames extends Component {
         return(
             <div>
                 <button>Edit Names</button>
+                <button>Reset Names</button>
             </div>
         )
     }

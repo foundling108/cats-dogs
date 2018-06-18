@@ -1,49 +1,8 @@
 const externalUrl = 'https://dog.ceo/api/breeds/image/random'
 const axios = require('axios');
 
-// var titles =
-// [ 
-//     {
-//         id: 1,
-//         title: "Sir "
-//     },
-//     {
-//         id: 2,
-//         title: "Mr. "
-//     },
-//     {
-//         id: 3,
-//         title: "Lord "
-//     },
-//     {
-//         id: 4,
-//         title: "Lady "
-//     },
-//     {
-//         id: 5,
-//         title: "Madam "
-//     },
-//     {   
-//         id: 6,
-//         title: "Ms. "
-//     },
-//     {
-//         id: 7,
-//         title: "Princess "
-//     },
-//     {
-//         id: 8,
-//         title: "Admiral "
-//     },
-//     {
-//         id: 9,
-//         title: "Snoop "
-//     },
-//     {
-//         id: 10,
-//         title: "Chad "
-//     }
-// ];
+var dogs = [];
+let count = 0;
 
 var names =
 [ 
@@ -103,8 +62,66 @@ module.exports =
         res.status(200).send(names);
     },
 
-    listnames: (req, res ) => {
+    createdog: (req, res) => {
+        let newDog = {...req.body, id: count}
+        dogs.push(newDog)
+        count++
+        res.send(dogs)
+    },
+    getdogs: (req, res) => {
+        res.send(dogs)
+    },
+    update: (req, res) => {
+        dogs.forEach((response, i) =>
+        {
+            if(+response.id === +req.params.id)
+            {
+               response.dogname = req.body.dogname
+            };
+        });
 
-    }
+        res.send(dogs);
+    },
+    delete: (req, res) =>
+    {
+        let index = null;
+        dogs.forEach((response, i) =>
+        {
+            if(+response.id === +req.params.id)
+            {
+                index = i;
+            };
+        });
+        
+        dogs.splice(index, 1);
+        res.status(200).send(dogs);
+
+//     listnames: (req, res) =>
+//     {
+//         // let index = names.length+1;
+//         let inputIndex = 1;
+//         for (var i = 0; i<names.length; i++)
+//         {
+//             if (names[i].id !== inputIndex)
+//             {    
+//                inputIndex = names[i-1].id + 1;
+//                break;
+//             }
+//             else
+//             {
+//                 inputIndex++;
+//             }
+//         }
+//         //console.log(inputIndex);
+//         const { name } = req.body;
+//         let response =
+//         {
+//             id: inputIndex,
+//             answer: name
+//         };
+//         names.splice(i, 0, response);
+        
+//         res.status(200).send(names);
+// }
 }
-    
+}

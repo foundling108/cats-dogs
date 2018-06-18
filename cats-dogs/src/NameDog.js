@@ -7,10 +7,10 @@ class NameDog extends Component {
         super();
 
 
-        this.state = {
-            dogName: "",
-            nameListed: ""
-        }
+        // this.state = {
+
+        //     nameListed: ""
+        // }
 
         this.nameButton = this.nameButton.bind(this);
     }
@@ -19,8 +19,8 @@ class NameDog extends Component {
     {
         axios.get(`/api/getname`).then(res =>
         {
-        this.setState({
-            nameListed: res.data[Math.floor(Math.random() * 9)].name
+        this.props.handleChange({
+            dogname: res.data[Math.floor(Math.random() * 10)].name
             
         });
     });
@@ -29,9 +29,11 @@ class NameDog extends Component {
     render() {
         return(
             <div>
-                <button onClick = {this.nameButton}>Name This Dog</button>
+                
                 <h3>Name:</h3>
-                <DisplayName q = {this.state.nameListed}/>
+                <DisplayName q = {this.props.dogname}/>
+                <button onClick = {this.nameButton}>Name This Dog</button>
+
                 
             </div>
         )

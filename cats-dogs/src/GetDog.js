@@ -6,9 +6,9 @@ class GetDog extends Component {
         super();
 
 
-        this.state = {
-            fetch: {}
-        }
+        // this.state = {
+        //     fetch: {}
+        // }
 
         this.fetchRandomDog = this.fetchRandomDog.bind(this);
     }
@@ -16,7 +16,7 @@ class GetDog extends Component {
     fetchRandomDog() {
         axios.get(`/api/getdog`).then(res =>
             {
-                this.setState({ fetch: res.data });
+                this.props.handleChange({ dogimg: res.data.message });
             });
     }
 
@@ -24,7 +24,7 @@ class GetDog extends Component {
         return(
             <div>
                 <div>
-                    <img className="dogimg" src={this.state.fetch.message} alt="dog"/>
+                    <img className="dogimg" src={this.props.dogimg} alt="dog"/>
                 </div>
                 <button onClick={this.fetchRandomDog}>Get Dog</button>
             </div>

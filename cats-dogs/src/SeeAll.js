@@ -41,12 +41,13 @@ class SeeAll extends Component {
         // });
         return(
             <div>
+                               
                 <button onClick = {this.listnames}>See Names</button>
                 <br/>
                 <div>
                  {/* {listOfNames} */}
                 </div>
-                <button>Save Dog</button>
+
 
 
 
