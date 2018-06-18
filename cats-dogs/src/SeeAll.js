@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 import EditNames from './EditNames.js'
 
@@ -8,23 +8,47 @@ class SeeAll extends Component {
         super();
 
         this.state = {
-            seeTitles: "",
-            seeNames: ""
+            seeNames: "",
+            saveToList: ""
         }
+
+        this.listnames = this.listnames.bind(this);
+    }
+
+    listnames() {
+        
+         
+            axios.get(`/api/seeNames`).then(res =>
+            {
+           //console.log(res.data);
+            this.setState({ seeNames: res.data });
+            });
+        
     }
 
     render() {
+
+        // let listOfNames = this.state.seeNames.map((e,i) =>
+        // {
+        //     return (
+        //         <div key={i+i} className = "SeeNameList">
+
+        //             { e.id + " " + e.names}
+
+        //         </div>
+
+        //     );
+        // });
         return(
             <div>
-                <button>See Names</button>
+                <button onClick = {this.listnames}>See Names</button>
+                <br/>
+                <div>
+                 {/* {listOfNames} */}
+                </div>
                 <button>Save Dog</button>
 
-                <div>
-                    <li></li>
-                </div>
-                <div>
-                    <li></li>
-                </div>
+
 
                 <div>
                     <EditNames />

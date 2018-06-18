@@ -6,7 +6,6 @@ class EditNames extends Component {
         super();
 
         this.state = {
-            newTitles: "",
             newNames: ""
         }
     }

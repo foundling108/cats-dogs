@@ -17,22 +17,22 @@ class DogList extends Component {
         return(
             <div className = 'DogList'>
                 <div>
-                    <img src="" alt=""/>
-                    <p>text</p>
+                    <img className = "dogimg" src="" alt=""/>
+                    <p className = "SeeAllList">text</p>
                     <button>Rename</button>
-                    <button>Dogleted</button>
+                    <button>Remove</button>
                 </div>
                 <div>
-                    <img src="" alt=""/>
-                    <p>text</p>
+                    <img className = "dogimg" src="" alt=""/>
+                    <p className = "SeeAllList">text</p>
                     <button>Rename</button>
-                    <button>Dogleted</button>
+                    <button>Remove</button>
                 </div>
                 <div>
-                    <img src="" alt=""/>
-                    <p>text</p>
+                    <img className = "dogimg" src="" alt=""/>
+                    <p className = "SeeAllList">text</p>
                     <button>Rename</button>
-                    <button>Dogleted</button>
+                    <button>Remove</button>
                 </div>
             </div>
         )

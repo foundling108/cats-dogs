@@ -56,6 +56,19 @@
   align-items: center;
 }
 
+.dogimg {
+  height: 100px;
+  width: 100px;
+}
+
+.SeeAllList {
+  font-size: 24px;
+}
+
+.NameDogList {
+  font-size: 24px;
+}
+
 
 .DogList {
   display: flex;
